@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Chúc Mừng Quốc Tế Thiếu Nhi 1/6 💕</title>
+    <style>
+        :root {
+            --pink-light: #ffe6ea;
+            --pink-main: #ffb3c1;
+            --pink-dark: #ff4d6d;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--pink-light), #fff3f5);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #4a4a4a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+            user-select: none;
+        }
+
+        /* Hạt tim rơi lãng mạn */
+        .heart-3d {
+            position: fixed;
+            font-size: 26px;
+            z-index: 999;
+            pointer-events: none;
+            will-change: transform, opacity;
+            filter: drop-shadow(0 4px 6px rgba(255, 77, 109, 0.3));
+            animation: floatUp3D 4.5s linear infinite;
+        }
+
+        @keyframes floatUp3D {
+            0% { transform: translateY(105vh) translateX(0) rotateX(0deg) rotateY(0deg) scale(0.7); opacity: 1; }
+            50% { transform: translateY(50vh) translateX(40px) rotateX(180deg) rotateY(90deg) scale(1.1); opacity: 0.9; }
+            100% { transform: translateY(-10vh) translateX(-30px) rotateX(360deg) rotateY(360deg) scale(0.7); opacity: 0; }
+        }
+
+        .container {
+            max-width: 500px;
+            width: 90%;
+            margin: 25px auto;
+            background: rgba(255, 255, 255, 0.93);
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.18);
+            text-align: center;
+            border: 3px dashed var(--pink-main);
+            backdrop-filter: blur(8px);
+            position: relative;
+        }
+
+        h1 {
+            color: var(--pink-dark);
+            font-size: 26px;
+            margin-bottom: 5px;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.03); }
+        }
+
+        /* Khung hộp ảnh 3D */
+        .stage-3d {
+            perspective: 1200px;
+            width: 100%;
+            height: 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;a
+            position: relative;
+            background: radial-gradient(circle, rgba(255,240,243,0.8) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 20px;
+            cursor: grab;
+            touch-action: none;
+        }
+
+        .stage-3d:active { cursor: grabbing; }
+
+        .cube-3d {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            transform-style: preserve-3d;
+            transform: rotateX(-15deg) rotateY(0deg);
+            will-change: transform;
+            transition: transform 0.1s ease-out;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.25);
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            backface-visibility: hidden;
+        }
+
+        .cube-face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .face-front { transform: rotateY(0deg) translateZ(95px); }
+        .face-back { transform: rotateY(180deg) translateZ(95px); }
+        .face-left { transform: rotateY(-90deg) translateZ(95px); }
+        .face-right { transform: rotateY(90deg) translateZ(95px); }
+        .face-top { transform: rotateX(90deg) translateZ(95px); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(95px); }
+
+        /* Nút bấm tinh tế kích hoạt nhạc */
+        .music-trigger-btn {
+            background: linear-gradient(135deg, var(--pink-dark), #ff758f);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
+            margin: 15px auto 25px auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: bounceBtn 2s infinite;
+        }
+
+        @keyframes bounceBtn {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5px) scale(1.03); }
+        }
+
+        /* Thu nhỏ tinh tế xuống góc dưới sau khi đã kích hoạt thành công */
+        /* Ẩn hoàn toàn trình phát video YouTube để giữ thẩm mỹ */
+        #yt-player-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Khung ẩn chứa trình phát YouTube Player API ngầm -->
+    <div id="yt-player-hidden"></div>
+
+    <div class="container">
+        <h1>Happy Children's Day! 🧸</h1>
+        <p style="color: #ff758f; font-weight: bold; margin-top: -5px; font-size: 15px;">Gửi em bé duy nhất và tuyệt vời nhất của anh! ✨</p>
+        
+        <div class="stage-3d" id="drag-stage">
+            <div class="cube-3d" id="cube">
+                <!-- Giữ nguyên bộ 6 ảnh chuẩn của bồ -->
+                <div class="cube-face face-front"><img src="https://i.postimg.cc/Tw5HSKBy/IMG-1779533528087-1779536035897.jpg" alt="Ảnh 1"></div>
+                <div class="cube-face face-back"><img src="https://i.postimg.cc/zGKhdKzD/att-x8f1U6XBS85OE6yyh-7oj-UPHo-WFCnu-FIYv-Vm-gtm-PMM-jpg.jpg" alt="Ảnh 2"></div>
+                <div class="cube-face face-left"><img src="https://i.postimg.cc/T1KLnWN3/att-TZE8Nz-Rbwod-4-tl-OQS2wo1oq-ZUuj-Zc5l-Tf-YXKW-qn8-jpg.jpg" alt="Ảnh 3"></div>
+                <div class="cube-face face-right"><img src="https://i.postimg.cc/zGCLwN7y/1777653986781.png" alt="Ảnh 4"></div>
+                <div class="cube-face face-top"><img src="https://i.postimg.cc/qgfRnDC5/att-Z7Www-QWR5PYiw-Gs-Q4p-p-Htt-Tiwt-YVj-FXdkco-h-VWQpc-jpg.jpg" alt="Ảnh 5"></div>
+                <div class="cube-face face-bottom"><img src="https://i.postimg.cc/C13BHx39/IMG-20260308-121750.jpg" alt="Ảnh 6"></div>
+            </div>
+        </div>
+        <p style="font-size: 13px; color: #ff4d6d; font-weight: bold; margin-top: -10px; margin-bottom: 15px; animation: pulse 1s infinite alternate;">👆 Hãy lấy ngón tay vuốt/kéo chiếc hộp để xoay ngắm ảnh nhé bồ!</p>
+
+        <!-- NÚT BẤM "BẤM VÔ ĐÂY NÈ" THEO ĐÚNG KHUÔN MẪU -->
+        <button class="music-trigger-btn" id="music-btn" onclick="handleMusicClick()">Bấm vô đây nè 🎵</button>
+
+        <div class="message-box">
+            <h3>💝 Gửi Công Chúa Nhỏ Của Anh...</h3>
+            <div class="message-text">
+                Hôm nay là mùng 1/6, ngày của các bé thiếu nhi, và dĩ nhiên là không thể thiếu embee siuuu đáng yêu này của anh rồi! 🥰 <br><br>
+                Chúc em luôn luôn vui vẻ, tràn ngập nụ cười tươi tắn trên môi nhé. Cho dù ngoài kia thế giới có bận rộn và nhiều áp lực thế nào, thì khi ở bên cạnh anh, em cứ yên tâm làm một embee thuii không cần phải trưởng thành, luôn được nuông chiều và yêu thương hết mực. <br><br>
+                Cảm ơn em vì đã xuất hiện và mang đến thật nhiều hạnh phúc cho anh. Mỗi khoảnh khắc ở bên em, nhìn em cười, hay cả những lúc em dỗi hờn, đối với anh đều là những kỷ niệm vô giá. <br><br>
+                Anh yêu em rất nhiều, yêu hơn tất cả những gì anh có thể nói thành lời! Chúc em bé của anh có một ngày 1/6 thật trọn vẹn và ấm áp bên anh nha! 👩‍❤️‍👨✨
+            </div>
+            <div class="love-signature">~ Yêu em mãi mãi 💖 ~</div>
+        </div>
+    </div>
+
+    <!-- Nhúng API phát video ngầm từ YouTube -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        // Hiệu ứng tim bay
+        function createHeart3D() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-3d');
+            const icons = ['❤️','💖','💓','💝','✨','🧸','⭐'];
+            heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3.5 + "s"; 
+            heart.style.fontSize = Math.random() * 12 + 16 + "px"; 
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 4500);
+        }
+        setInterval(createHeart3D, 300);
+
+        // Vuốt xoay hộp ảnh 3D
+        // ===== KHỞI TẠO TRÌNH PHÁT YOUTUBE ẨN =====
+        let player;
+        let isMusicPlaying = false;
+        const btn = document.getElementById('music-btn');
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player-hidden', {
+                height: '1',
+                width: '1',
+                videoId: 'FN7ALfpGxiI', // ID Video gốc bài "Nơi Này Có Anh" của Sơn Tùng M-TP
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'FN7ALfpGxiI' // Lặp lại bài hát vô tận
+                }
+            });
+        }
+
+        // ===== SỰ KIỆN BẤM NÚT ĐIỀU KHIỂN NHẠC =====
+        function handleMusicClick() {
+            if (!player || typeof player.playVideo !== 'function') {
+                alert("Đang nạp nhạc từ YouTube, bồ đợi 1-2 giây rồi bấm lại nha!");
+                return;
+            }
+
+            if (!isMusicPlaying) {
+                player.playVideo();
+                isMusicPlaying = true;
+                btn.textContent = "Đã bật nhạc 🥰";
+                btn.classList.add('activated');
+            } else {
+                player.pauseVideo();
+                isMusicPlaying = false;
+                btn.textContent = "Bấm vô đây nè 🎵";
+                btn.classList.remove('activated');
+            }
+        }
+    </script>
+</body>
+</html>
+
